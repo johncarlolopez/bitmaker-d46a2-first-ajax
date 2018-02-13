@@ -5,6 +5,8 @@ document.addEventListener("DOMContentLoaded", function() {
   var stepThreeDivEle = document.querySelector('#step3456');
   var stepSevenEle = document.querySelector('.step_seven');
   var stepSevenDivEle = document.querySelector('#step7');
+  var stepEightEle = document.querySelector('.step_eight');
+  var stepEightDivEle = document.querySelector('#step8');
 
   stepOneEle.addEventListener('click', function() {
     var response = $.ajax( {
@@ -43,6 +45,18 @@ document.addEventListener("DOMContentLoaded", function() {
         var countResponseEle = document.createElement('p').innerHTML = responseData;
         stepSevenDivEle.append(countResponseEle);
       });
-  })
+  });
+
+  stepEightEle.addEventListener('click', function() {
+    var response = $.ajax( {
+          url: 'https://first-ajax-api.herokuapp.com/time',
+          data: {timezone: 'Pacific/Honolulu'},
+          method: 'GET',
+          dataType: 'text'
+      }).done(function(responseData) {
+        var timeResponseEle = document.createElement('p').innerHTML = responseData;
+        stepEightDivEle.append(timeResponseEle);
+      });
+  });
 
 });
